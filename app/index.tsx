@@ -1,12 +1,8 @@
+import MainStructure from "@/src/components/main-structure";
 import React from "react";
-import { Text, View } from "react-native";
 
 const Index = () => {
-  return (
-    <View>
-      <Text>Index page</Text>
-    </View>
-  );
+  return <MainStructure />;
 };
 
 export default Index;
