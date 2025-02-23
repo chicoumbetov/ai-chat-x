@@ -13,6 +13,7 @@ import {
 } from "react-native-gesture-handler";
 import Animated, { useSharedValue, withTiming } from "react-native-reanimated";
 import { styles } from "../main-structure/styles";
+import NavigationHeading from "../navigation-heading";
 import NavigationItem from "../navigation-item";
 import SearchComponent from "../search-component";
 
@@ -73,12 +74,9 @@ const CustomDrawerContent = (props: any) => {
             <View style={styles.navigationContentWrapper}>
               <ScrollView showsVerticalScrollIndicator={false}>
                 <SearchComponent onNewChatPress={onNewChatPress} />
-                {/*
-                TODO
-                NavigationHeading
-                NavigationItem
-                NavigationHeading
-                */}
+                <NavigationHeading title="GPTs" />
+                <NavigationItem enableIcon title="Explore GPTs" />
+                <NavigationHeading title="Chats" />
                 <View>
                   {chatListMockData?.map((title, idx) => {
                     return <NavigationItem key={idx} title={title} />;
