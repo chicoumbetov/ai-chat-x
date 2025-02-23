@@ -1,3 +1,7 @@
+import * as eva from "@eva-design/eva";
+import { ApplicationProvider } from "@ui-kitten/components";
+
+import MainDrawerNavigator from "@/src/components/Drawer/MainDrawerNavigator";
 import CommonProvider from "@/src/context/common-provider";
 import {
   DarkTheme,
@@ -5,10 +9,8 @@ import {
   ThemeProvider,
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
-import { StatusBar } from "expo-status-bar";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import "react-native-reanimated";
 import { useColorScheme } from "../src/hooks/useColorScheme";
 
@@ -32,14 +34,14 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <CommonProvider>
-        <Stack>
-          <Stack.Screen name="index" options={{ headerShown: false }} />
-          <Stack.Screen name="+not-found" />
-        </Stack>
-        <StatusBar style="auto" />
-      </CommonProvider>
-    </ThemeProvider>
+    <ApplicationProvider {...eva} theme={eva.light}>
+      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+        <CommonProvider>{loaded && <RootLayoutNav />}</CommonProvider>
+      </ThemeProvider>
+    </ApplicationProvider>
   );
 }
+
+const RootLayoutNav = () => {
+  return <MainDrawerNavigator />;
+};
