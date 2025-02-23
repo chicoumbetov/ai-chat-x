@@ -24,9 +24,6 @@ export const styles = StyleSheet.create({
   },
   mainWrapper: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "flex-end",
-    width: Dimensions.get("screen").width,
     height: "100%",
   },
   closeButton: {
