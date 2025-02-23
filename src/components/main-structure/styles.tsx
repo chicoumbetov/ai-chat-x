@@ -13,14 +13,11 @@ export const styles = StyleSheet.create({
   navigationWrapper: {
     alignItems: "center",
     justifyContent: "flex-start",
-    width: Dimensions.get("screen").width,
     height: "100%",
   },
   navigationContentWrapper: {
-    marginLeft: 70,
-    paddingTop: 50,
-    paddingBottom: 20,
-    width: Dimensions.get("screen").width - 70,
+    padding: 20,
+    width: "100%",
   },
   mainWrapper: {
     flex: 1,
