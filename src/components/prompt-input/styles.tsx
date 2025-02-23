@@ -17,12 +17,13 @@ export const styles = StyleSheet.create({
   },
   leftInputContentWrapper: {
     flexDirection: "row",
-    flex: 1,
+
     alignItems: "center",
     justifyContent: "flex-start",
     columnGap: 14,
   },
   mainInputWrapper: {
+    flex: 1,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
