@@ -1,6 +1,10 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    backgroundColor: "#fff",
+  },
   container: {
     flex: 1,
     width: "100%",
@@ -9,7 +13,12 @@ export const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingHorizontal: 20,
     position: "absolute",
-    top: 60,
+
+    height: 60,
+    backgroundColor: "#fff",
+    padding: 0,
+    borderBottomColor: "#dedede",
+    borderBottomWidth: 1,
   },
   menuIcon: {
     height: 25,
