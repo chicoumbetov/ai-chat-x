@@ -7,8 +7,8 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     marginBottom: 10,
-    paddingLeft: 10,
-    paddingRight: 20,
+    paddingLeft: 5,
+    paddingRight: 10,
   },
   searchWrapper: {
     flexDirection: "row",
@@ -16,14 +16,14 @@ export const styles = StyleSheet.create({
     justifyContent: "space-between",
     width: "82%",
     borderRadius: 50,
-    paddingVertical: Platform.OS === "android" ? 4 : 12,
+    paddingVertical: Platform.OS === "android" ? 4 : 8,
     paddingHorizontal: 15,
     backgroundColor: COLORS.grey_v1,
     columnGap: 10,
   },
   searchIcon: {
-    width: 30,
-    height: 30,
+    width: 20,
+    height: 20,
     resizeMode: "contain",
   },
   searchInput: {

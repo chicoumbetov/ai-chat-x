@@ -22,7 +22,7 @@ const MainDrawerNavigator = () => {
 
         return {
           drawerStyle: {
-            width: 270,
+            width: "70%",
           },
           header: (headerProps) => (
             <MainHeader
