@@ -26,19 +26,12 @@ const MainStructure = () => {
   const {
     setNavigationContextMenuPosition,
     setIsNavigationContextMenuOpen,
-    isNavigationContextMenuOpen,
     navigationContextMenuPosition,
   } = CommonState();
   const [defaultCategory, setDefaultCategory] = useState(true);
   const [categoryAnimationFlag, setCategoryAnimationFlag] = useState(true);
   const openMenu = () => {
     gestureHandlerWidth.value = withTiming(width - 70);
-
-    /**
-     * 1) withSprint(1)
-     * 2) withTiming(1)
-     * 3) withDelay(500, func)
-     */
   };
   const onNewChatPress = () => {
     gestureHandlerWidth.value = withTiming(0);
@@ -57,17 +50,13 @@ const MainStructure = () => {
 
   const onGestureEvent = Gesture.Pan()
     .onBegin((e) => {
-      // : any, ctx: any) => {
-      // ctx.startX = gestureHandlerWidth.value;
       e.x = gestureHandlerWidth.value;
     })
     .onChange((e) => {
-      // , ctx: any) => {
-      const value = e.x + e.translationX; // ctx.startX + e.translationX;
+      const value = e.x + e.translationX;
 
       if (value <= width - 70 && value > 0) {
         gestureHandlerWidth.value = value;
-        // ctx.value = value;
         e.x = value;
       }
     })
@@ -85,22 +74,11 @@ const MainStructure = () => {
       }
     });
 
-  const overlayAnimatedStyle = useAnimatedStyle(() => {
-    let value = Math.floor((gestureHandlerWidth.value / width) * 100) / 100;
-    return {
-      display: gestureHandlerWidth.value ? "flex" : "none",
-      opacity: Math.min(value, 0.5),
-    };
-  });
-
   const onActivated = () => {
     gestureHandlerWidth.value = withTiming(0, { duration: 300 });
     hideNavigationContextMenu();
   };
-  const contextMenuStyle = {
-    top: navigationContextMenuPosition?.absoluteY,
-    left: navigationContextMenuPosition?.absoluteX + 70,
-  };
+
   const hideNavigationContextMenu = () => {
     setIsNavigationContextMenuOpen(false);
     setTimeout(() => {
@@ -110,10 +88,6 @@ const MainStructure = () => {
         absoluteY: -500,
       });
     });
-  };
-
-  const handleMorePress = () => {
-    setDefaultCategory(!defaultCategory);
   };
 
   return (
