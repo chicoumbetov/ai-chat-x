@@ -23,6 +23,7 @@ const Index = () => {
           flex: 1,
         },
       }}
+      withScrollView="keyboardAware"
     >
       <Animated.View style={styles.mainWrapper}>
         <View style={styles.categoryBadgesWrapper}>

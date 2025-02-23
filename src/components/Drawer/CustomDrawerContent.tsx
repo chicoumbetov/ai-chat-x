@@ -6,12 +6,14 @@ import { useRouter } from "expo-router";
 import { View } from "react-native";
 
 import { chatListMockData } from "@/src/constants/mock-data/chatlistmockdata";
+import { CommonState } from "@/src/context/common-provider";
 import { Drawer } from "@ui-kitten/components";
 import {
   GestureHandlerRootView,
   ScrollView,
 } from "react-native-gesture-handler";
 import Animated, { useSharedValue, withTiming } from "react-native-reanimated";
+import ContextMenu from "../context-menu";
 import { styles } from "../main-structure/styles";
 import NavigationHeading from "../navigation-heading";
 import NavigationItem from "../navigation-item";
@@ -27,7 +29,8 @@ function findIndexByRouteName(name?: string) {
 }
 
 const CustomDrawerContent = (props: any) => {
-  const { state } = props;
+  const { isNavigationContextMenuOpen, navigationContextMenuPosition } =
+    CommonState();
   const gestureHandlerWidth = useSharedValue(0);
 
   const [selectedIndex, setSelectedIndex] = React.useState();
@@ -54,6 +57,11 @@ const CustomDrawerContent = (props: any) => {
     setDefaultCategory(true);
   };
 
+  const contextMenuStyle = {
+    top: navigationContextMenuPosition?.absoluteY,
+    left: navigationContextMenuPosition?.absoluteX + 70,
+  };
+
   return (
     <View style={{ flex: 1, marginTop: inset.top, marginBottom: inset.bottom }}>
       <GestureHandlerRootView
@@ -70,6 +78,10 @@ const CustomDrawerContent = (props: any) => {
           }}
           {...props}
         >
+          <ContextMenu
+            isToggle={isNavigationContextMenuOpen}
+            customStyle={contextMenuStyle}
+          />
           <Animated.View style={styles.navigationWrapper}>
             <View style={styles.navigationContentWrapper}>
               <ScrollView showsVerticalScrollIndicator={false}>
